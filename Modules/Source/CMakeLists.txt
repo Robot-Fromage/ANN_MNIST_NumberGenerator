@@ -52,7 +52,7 @@ elseif( "${ANNMNISTNG_EXPLICIT_COMPILER_ID}" STREQUAL "GCC" )
         SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
     # Specific flags for MinGW GCC
     elseif( "${ANNMNISTNG_EXPLICIT_HOST_ID}" STREQUAL "WIN" )
-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -msse4.1 -W")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -msse4.1 -Wa,-mbig-obj")
     endif()
 
     # Support for alternat drop-in replacement of ld linker with Clang's lld, only for recent GCC ( not 7.3.0 shipped with Qt )
@@ -63,7 +63,7 @@ elseif( "${ANNMNISTNG_EXPLICIT_COMPILER_ID}" STREQUAL "GCC" )
 elseif( "${ANNMNISTNG_EXPLICIT_COMPILER_ID}" STREQUAL "MSVC" )
     # Flags for MSVC
     set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Zi -Gm- -Od -Ob0 -RTC1 -MDd")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -EHsc")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -bigobj -EHsc")
 endif()
 
 #--------------------------------------------
