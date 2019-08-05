@@ -137,6 +137,7 @@ endif()
 
 if( ${ANNMNISTNG_BUILD_TESTS} )
     include(${CMAKE_CURRENT_SOURCE_DIR}/Basic_MNIST_Train/CMakeLists.txt)
+    include(${CMAKE_CURRENT_SOURCE_DIR}/Basic_MNIST_Test/CMakeLists.txt)
     if( ${ANNMNISTNG_BUILD_GUIS} )
     endif()
 endif()

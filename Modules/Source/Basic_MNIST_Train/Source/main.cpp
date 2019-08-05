@@ -12,13 +12,6 @@
 #include <iostream>
 #include "tiny_dnn/tiny_dnn.h"
 
-#ifndef NDEBUG
-#define CONFIG_SUFFIX d
-#else
-#define CONFIG_SUFFIX
-#endif
-#define STRINGIZE( i ) #i
-
 int main()
 {
     // Uniform random vec_t:
@@ -42,8 +35,7 @@ int main()
 
     nn  << tiny_dnn::layers::fc( 784, 15, true, backend )
         << tiny_dnn::activation::sigmoid()
-        << tiny_dnn::layers::fc( 15, 10, true, backend )
-        << tiny_dnn::activation::sigmoid();
+        << tiny_dnn::layers::fc( 15, 10, true, backend );
 
     std::cout << "start training" << std::endl;
 
@@ -79,8 +71,7 @@ int main()
     // test and show results
     nn.test(test_images, test_labels).print_detail(std::cout);
     // save network model & trained weights
-    std::string suffix = STRINGIZE( CONFIG_SUFFIX );
-    nn.save( "BasicModel" + suffix );
+    nn.save( "BasicModel" );
 
     return  0;
 }
