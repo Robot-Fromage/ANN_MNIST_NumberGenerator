@@ -14,18 +14,6 @@
 
 int main()
 {
-    // Uniform random vec_t:
-    // tiny_dnn::vec_t in( 100 );
-    // tiny_dnn::uniform_rand(in.begin(), in.end(), 0, 1);
-
-    // Traverse layers:
-    // for (layer* l : net) {
-    //     std::cout << l->layer_type() << std::endl;
-    // }
-
-    // Freeze layer:
-    // net[1]->set_trainable(false);
-
     // load MNIST dataset
     std::vector<tiny_dnn::label_t> train_labels, test_labels;
     std::vector<tiny_dnn::vec_t> train_images, test_images;
@@ -54,6 +42,8 @@ int main()
     double learning_rate = 3.0;
     int n_train_epochs = 30;
     int n_minibatch = 10;
+
+    optimizer.alpha = learning_rate;
 
     // create callback
     auto on_enumerate_epoch = [&]() {
